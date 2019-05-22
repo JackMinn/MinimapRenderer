@@ -1,0 +1,12 @@
+*.nif
+*.dds
+*.lib
+*.dll
+*.exe
+*.stx
+Debug/*
+SRCBackups/*
+x64/*
+.vs/*
+MinimapRenderer/Debug/*
+MinimapRenderer/x64/*

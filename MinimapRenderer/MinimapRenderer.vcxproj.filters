@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\PCH">
+      <UniqueIdentifier>{54beb81e-93c1-42a2-b725-e0afca706af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PCH\Public">
+      <UniqueIdentifier>{b5fa505f-99d5-40a5-933d-42c9d83a103a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PCH\Private">
+      <UniqueIdentifier>{952fbc26-3c16-448d-8353-fc3b9bc19edc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime">
+      <UniqueIdentifier>{f6c44e4d-9764-46dd-973f-824d3e60b2d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core">
+      <UniqueIdentifier>{9c876449-a331-4871-9046-108680f99417}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core\Public">
+      <UniqueIdentifier>{cfc85aa8-9553-47ca-b4d7-bfde2b5a559f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core\Public\Misc">
+      <UniqueIdentifier>{694112ed-3c2e-4924-8d57-dce6816652d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core\Public\Windows">
+      <UniqueIdentifier>{5c85edc3-3eaf-4f9c-95dd-5b78a41ebb68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core\Private">
+      <UniqueIdentifier>{20c1bf0e-4b58-493b-9031-5931ceaaf1f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Core\Private\Windows">
+      <UniqueIdentifier>{21c1ba5e-1042-403c-9760-15e395148ab4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer">
+      <UniqueIdentifier>{c3f6f402-c5b0-4c68-a895-84f0f3b91411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Public">
+      <UniqueIdentifier>{1a8750a8-502f-4e07-8448-fcf602b88ea2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Private">
+      <UniqueIdentifier>{d939acb3-6164-42aa-9c33-c4ecd49b40f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Private\D3D11">
+      <UniqueIdentifier>{4d542880-aed5-474b-9d31-6e52e14806dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Public\D3D11">
+      <UniqueIdentifier>{f499aaa8-472a-4273-83ee-b1b5e505b5da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Application">
+      <UniqueIdentifier>{0d1b3502-e415-4848-b51e-c3783203bd19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Application\Public">
+      <UniqueIdentifier>{538613a4-5e20-4bc2-87e8-663db0917e0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Application\Private">
+      <UniqueIdentifier>{61a44ee4-9783-4fb2-bade-de6f396f0973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party">
+      <UniqueIdentifier>{33c940a2-951a-4990-94d9-9b14629b5f61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\SimpleMath">
+      <UniqueIdentifier>{88991835-5372-4d7d-bd04-01f567810d50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\SimpleMath\Public">
+      <UniqueIdentifier>{3cb52f21-fef6-4d12-a0fa-130b41a73119}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\SimpleMath\Private">
+      <UniqueIdentifier>{8ac87227-3fd4-4ad6-ac13-dbdbc7359bad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\DDSTextureLoader">
+      <UniqueIdentifier>{58d5f3b1-4f1e-4b47-b847-aac5d3fd13f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\DDSTextureLoader\Public">
+      <UniqueIdentifier>{22d029d1-45d3-4625-9fbe-c395f99aac2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\DDSTextureLoader\Private">
+      <UniqueIdentifier>{f6e059f0-b462-4190-89d2-1dfa82526707}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Private\Engine">
+      <UniqueIdentifier>{53256719-2a4a-412a-878b-6ce407551d56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Runtime\Renderer\Public\Engine">
+      <UniqueIdentifier>{4a374569-f0d0-411f-8e1a-8e6a41e62c19}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\PCH\Public\stdafx.h">
+      <Filter>Source Files\PCH\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Core\Public\Misc\Utilities.h">
+      <Filter>Source Files\Runtime\Core\Public\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Core\Public\Windows\WindowsApplication.h">
+      <Filter>Source Files\Runtime\Core\Public\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\Fixture.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\AssetManager.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="3rd Party\SimpleMath\Public\SimpleMath.h">
+      <Filter>Third Party\SimpleMath\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSTextureLoader.h">
+      <Filter>Third Party\DDSTextureLoader\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSReader.h">
+      <Filter>Third Party\DDSTextureLoader\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11RHI.h">
+      <Filter>Source Files\Runtime\Renderer\Public\D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Core\Public\Misc\RefCounting.h">
+      <Filter>Source Files\Runtime\Core\Public\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\RenderEngine.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11Util.h">
+      <Filter>Source Files\Runtime\Renderer\Public\D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11ConstantBuffer.h">
+      <Filter>Source Files\Runtime\Renderer\Public\D3D11</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\Camera.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\Transform.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\Cursor.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\Input.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\VertexBuffer.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\IndexBuffer.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Texture2D.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\FixtureInstance.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Mesh.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Shader.h">
+      <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MinimapRenderer.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MinimapRenderer.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Src\PCH\Private\stdafx.cpp">
+      <Filter>Source Files\PCH\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Core\Private\Windows\WindowsApplication.cpp">
+      <Filter>Source Files\Runtime\Core\Private\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Core\Private\Windows\WinMain.cpp">
+      <Filter>Source Files\Runtime\Core\Private\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\Fixture.cpp">
+      <Filter>Source Files\Runtime\Application\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\AssetManager.cpp">
+      <Filter>Source Files\Runtime\Application\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="3rd Party\SimpleMath\Private\SimpleMath.cpp">
+      <Filter>Third Party\SimpleMath\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="3rd Party\DDSTextureLoader\Private\DDSTextureLoader.cpp">
+      <Filter>Third Party\DDSTextureLoader\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="3rd Party\DDSTextureLoader\Private\DDSReader.cpp">
+      <Filter>Third Party\DDSTextureLoader\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Renderer\Private\D3D11\D3D11RHI.cpp">
+      <Filter>Source Files\Runtime\Renderer\Private\D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\RenderEngine.cpp">
+      <Filter>Source Files\Runtime\Renderer\Private\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Renderer\Private\D3D11\D3D11ConstantBuffer.cpp">
+      <Filter>Source Files\Runtime\Renderer\Private\D3D11</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\Camera.cpp">
+      <Filter>Source Files\Runtime\Application\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\Transform.cpp">
+      <Filter>Source Files\Runtime\Application\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\Input.cpp">
+      <Filter>Source Files\Runtime\Application\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\FixtureInstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\Mesh.cpp">
+      <Filter>Source Files\Runtime\Renderer\Private\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\Shader.cpp">
+      <Filter>Source Files\Runtime\Renderer\Private\Engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3rd Party\SimpleMath\Public\SimpleMath.inl">
+      <Filter>Third Party\SimpleMath\Public</Filter>
+    </None>
+  </ItemGroup>
+</Project>

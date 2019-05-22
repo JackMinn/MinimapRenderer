@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{55E54A83-126D-4D8C-95A4-8390AF4DCB54}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>MinimapRenderer</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NIFLIB_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\DDSTextureLoader\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\SimpleMath\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Application\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\PCH\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Renderer\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Core\Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>niflib_static_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;NIFLIB_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\DDSTextureLoader\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\SimpleMath\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Application\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\PCH\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Renderer\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Core\Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>niflib_static_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSReader.h" />
+    <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSTextureLoader.h" />
+    <ClInclude Include="3rd Party\SimpleMath\Public\SimpleMath.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Src\PCH\Public\stdafx.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\AssetManager.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\Camera.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\Cursor.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\Fixture.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\FixtureInstance.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\Input.h" />
+    <ClInclude Include="Src\Runtime\Application\Public\Transform.h" />
+    <ClInclude Include="Src\Runtime\Core\Public\Misc\RefCounting.h" />
+    <ClInclude Include="Src\Runtime\Core\Public\Misc\Utilities.h" />
+    <ClInclude Include="Src\Runtime\Core\Public\Windows\WindowsApplication.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11ConstantBuffer.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11RHI.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\D3D11\D3D11Util.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\IndexBuffer.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Mesh.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\RenderEngine.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Shader.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Texture2D.h" />
+    <ClInclude Include="Src\Runtime\Renderer\Public\Engine\VertexBuffer.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MinimapRenderer.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="MinimapRenderer.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="3rd Party\DDSTextureLoader\Private\DDSReader.cpp" />
+    <ClCompile Include="3rd Party\DDSTextureLoader\Private\DDSTextureLoader.cpp" />
+    <ClCompile Include="3rd Party\SimpleMath\Private\SimpleMath.cpp" />
+    <ClCompile Include="Src\PCH\Private\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Src\Runtime\Application\Private\AssetManager.cpp" />
+    <ClCompile Include="Src\Runtime\Application\Private\Camera.cpp" />
+    <ClCompile Include="Src\Runtime\Application\Private\Fixture.cpp" />
+    <ClCompile Include="Src\Runtime\Application\Private\FixtureInstance.cpp" />
+    <ClCompile Include="Src\Runtime\Application\Private\Input.cpp" />
+    <ClCompile Include="Src\Runtime\Application\Private\Transform.cpp" />
+    <ClCompile Include="Src\Runtime\Core\Private\Windows\WindowsApplication.cpp" />
+    <ClCompile Include="Src\Runtime\Core\Private\Windows\WinMain.cpp" />
+    <ClCompile Include="Src\Runtime\Renderer\Private\D3D11\D3D11ConstantBuffer.cpp" />
+    <ClCompile Include="Src\Runtime\Renderer\Private\D3D11\D3D11RHI.cpp" />
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\Mesh.cpp" />
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\RenderEngine.cpp" />
+    <ClCompile Include="Src\Runtime\Renderer\Private\Engine\Shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3rd Party\SimpleMath\Public\SimpleMath.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
