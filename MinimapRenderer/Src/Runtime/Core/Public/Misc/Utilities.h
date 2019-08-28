@@ -10,7 +10,8 @@
 
 
 #if _DEBUG
-#	define DebugLog(fmt, ...) EngineDebugLog(fmt, __VA_ARGS__);
+//#	define DebugLog(fmt, ...) EngineDebugLog(fmt, __VA_ARGS__);
+#define DebugLog(fmt, ...)
 #else
 #	define DebugLog(fmt, ...)
 #endif
@@ -60,3 +61,9 @@ inline void EngineDebugLog(const char *szTypes, ...)
 #define NO_COPY_CONSTRUCT_OR_COPY_ASSIGN(x) \
 	x(const x&) = delete; \
 	x& operator=(const x&) = delete;
+
+inline void RemoveWhiteSpaces(std::string& s) {
+	std::string::iterator end_pos;
+	end_pos = std::remove(s.begin(), s.end(), ' ');
+	s.erase(end_pos, s.end());
+}

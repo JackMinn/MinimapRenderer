@@ -43,30 +43,33 @@ INT32 WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR pScmdli
 		return 0;
 	}
 
+	//fi.0.0.dw_rvr_fortress.nif
 	std::string fileName(pScmdline);
 
-	g_AssetManager.Initialize("assetdb/fixtures/", "assetdb/textures/");
-	g_AssetManager.AddFixture(fileName, mainApplication.GetWindowHandle());
+	g_AssetManager.Initialize(mainApplication.GetWindowHandle(), "zones/TestZone/", "assetdb/fixtures/", "assetdb/textures/");
+	//g_AssetManager.AddFixture(fileName);
+	g_AssetManager.LoadAllFixtures();
+	g_AssetManager.LoadAllFixtureInstances();
+	
+	//Fixture* fixture = g_AssetManager.GetFixture(fileName);
 
-	Fixture* fixture = g_AssetManager.GetFixture(fileName);
+	//if (fixture == nullptr) {
+	//	return 0;
+	//}
+	//else {
+	//	DebugLog("si", "Number of renderable assets is: ", fixture->GetNumSubMeshes());
+	//	DebugLog("si", "Number of external textures loaded is: ", g_AssetManager.GetNumExternalTextures());
 
-	if (fixture == nullptr) {
-		return 0;
-	}
-	else {
-		DebugLog("si", "Number of renderable assets is: ", fixture->GetNumSubMeshes());
-		DebugLog("si", "Number of external textures loaded is: ", g_AssetManager.GetNumExternalTextures());
+		//// Remember, aside from the instance data transform, each fixture has its own world transform
+		//for (auto& geomRef : fixture->m_SubMeshes) {
+		//	auto worldTransform = geomRef->GetWorldTransform();
+		//	auto worldTranslation = worldTransform.GetTranslation();
+		//	//DebugLog("ssfsfsfs", "Translation is: ", "<", worldTranslation.x, ", ", worldTranslation.y, ", ", worldTranslation.z, ">");
 
-		// Remember, aside from the instance data transform, each fixture has its own world transform
-		for (auto& geomRef : fixture->m_SubMeshes) {
-			auto worldTransform = geomRef->GetWorldTransform();
-			auto worldTranslation = worldTransform.GetTranslation();
-			//DebugLog("ssfsfsfs", "Translation is: ", "<", worldTranslation.x, ", ", worldTranslation.y, ", ", worldTranslation.z, ">");
-
-			Niflib::NiGeometryDataRef geomData = geomRef->GetData();
-			std::vector<Niflib::Vector3> vertices = geomData->GetVertices();
-		}
-	}
+		//	Niflib::NiGeometryDataRef geomData = geomRef->GetData();
+		//	std::vector<Niflib::Vector3> vertices = geomData->GetVertices();
+		//}
+	//}
 
 	mainApplication.ProcessMessagesLoop();
 

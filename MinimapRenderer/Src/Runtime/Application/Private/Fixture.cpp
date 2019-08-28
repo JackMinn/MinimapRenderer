@@ -58,10 +58,6 @@ bool Fixture::Init() {
 			}
 		}
 
-		if (m_SubMeshes.empty()) {
-			DebugLog("s", "No submeshes.");
-		}
-
 		// This needs to be cleaned up, right now I decided to base the entire application on the NIF's coordinate system
 		// But it would be better to bring everything into RH DirectX. I should be able to apply a change of axis at the end to fix the normals and vertices. 
 		for (auto& nifGeomRef : m_SubMeshes) {
@@ -69,61 +65,34 @@ bool Fixture::Init() {
 			std::vector<Niflib::Vector3> normals = Fixture::GetSubmeshNormals(nifGeomRef);
 			std::vector<Niflib::TexCoord> uvs = Fixture::GetSubMeshUVs(nifGeomRef, 0); // UV set 0 is definitely used to sample the diffuse texture
 
+			// There are some nifs which are valid except for just a single submesh which is used for the animation system, 
+			// better to ignore that submesh than to scrap the entire nif
 			if (vertices.size() != normals.size() || vertices.size() != uvs.size()) {
-				DebugLog("s", "Number of vertices, normals and uvs is not equal for this submesh");
-				return false; // This is valid as the vector is filled ONLY with valid submeshes otherwise error
+				DebugLog("s", "Number of vertices, normals and uvs is not equal for this submesh. Skipping submesh.");
+				//return false; // This is valid as the vector is filled ONLY with valid submeshes otherwise error
+				continue;
 			}
 	
 			std::vector<UINT32> indexData = GetVertexIndices(nifGeomRef);
 			std::vector<VertexType> vertexData(vertices.size());
 			{
-				// I think everything needs to be converted to the proper coordinate system first
-				//z is actually y, y is actually negative z, x is actually negative x - so <-x, z, -y> is the vector we need for translation or position
-				//now we need to take care of rotation, how do we fix that? We can get the euler angles and then change what they represent a rotation around
-
 				using namespace DirectX::SimpleMath;
 				Niflib::Matrix44 worldTransform = nifGeomRef->GetWorldTransform();
-				//Niflib::Vector3 worldTranslation = worldTransform.GetTranslation();
-				//Niflib::Quaternion worldRotation = worldTransform.GetRotation().AsQuaternion();
-				//float worldScale = worldTransform.GetScale();
-
-				////DebugLog("sfsfsfs", "<", worldRotation.AsEulerYawPitchRoll()[0], ", ", worldRotation.AsEulerYawPitchRoll()[1], ", ", worldRotation.AsEulerYawPitchRoll()[2], ">");
-
-				//Vector3 S = Vector3(worldScale, worldScale, worldScale);
-				//float rad2Deg = PI * 2.f / 360.f;
-				///*Quaternion R = Quaternion::CreateFromPitchYawRoll(worldRotation.AsEulerYawPitchRoll()[1] * rad2Deg, 
-				//												  worldRotation.AsEulerYawPitchRoll()[0] * rad2Deg, 
-				//												  worldRotation.AsEulerYawPitchRoll()[2] * rad2Deg);*/
-				//Vector3 T = Vector3(worldTranslation.x, worldTranslation.y, worldTranslation.z);
-
-				//Matrix localToParent = Matrix::SRT(S, R, T);
-
-				//Quaternion coordinateChange = Quaternion::CreateFromPitchYawRoll TODO
-
-				/*Niflib::Matrix33 normalWorldTransform(worldTransform[0][0], worldTransform[0][1], worldTransform[0][2],
-					worldTransform[1][0], worldTransform[1][1], worldTransform[1][2],
-					worldTransform[2][0], worldTransform[2][1], worldTransform[2][2]);*/
-
 				Niflib::Matrix44 normalWorldTransform = worldTransform.Inverse();
 
 				// I need to rotate everything by 90 degrees around the x axis then negate the x-axis TODO
 				for (int i = 0; i < vertexData.size(); ++i) {
-					// Apply heirarchy transforms - COULD IT BE THAT TRANSFORM IS APPLYING MATRIX MULTIPLICATION FROM THE WRONG SIDE?! TODO
-					//Vector4 vertex = DirectX::SimpleMath::Vector4::Transform(Vector4(vertices[i].x, vertices[i].y, vertices[i].z, 1.f), localToParent);
-					//Vector3 normal = DirectX::SimpleMath::Vector3::TransformNormal(Vector3(normals[i].x, normals[i].y, normals[i].z), localToParent);
 
-					Niflib::Vector3 n = Niflib::Vector3(normals[i].x, normals[i].y, normals[i].z);
-
+					Niflib::Vector4 n = Niflib::Vector4(normals[i].x, normals[i].y, normals[i].z, 0);
 					Niflib::Vector3 normal;
-					/*normal.x = n.x * normalWorldTransform[0][0] + n.y * normalWorldTransform[1][0] + n.z * normalWorldTransform[2][0];
-					normal.y = n.x * normalWorldTransform[0][1] + n.y * normalWorldTransform[1][1] + n.z * normalWorldTransform[2][1];
-					normal.z = n.x * normalWorldTransform[0][2] + n.y * normalWorldTransform[1][2] + n.z * normalWorldTransform[2][2];*/
 
+					// Transform the normal vector by the transpose of the inverse world matrix
+
+					// Niflib forces vectors to be homogoneous when transformed by matrices, so DONT use their * operator
 					normal.x = n.x * normalWorldTransform[0][0] + n.y * normalWorldTransform[0][1] + n.z * normalWorldTransform[0][2];
 					normal.y = n.x * normalWorldTransform[1][0] + n.y * normalWorldTransform[1][1] + n.z * normalWorldTransform[1][2];
 					normal.z = n.x * normalWorldTransform[2][0] + n.y * normalWorldTransform[2][1] + n.z * normalWorldTransform[2][2];
 
-					// TEST
 					Niflib::Vector3 vertex = Niflib::Vector3(vertices[i].x, vertices[i].y, vertices[i].z);
 					vertex = worldTransform * vertex;
 
@@ -148,8 +117,8 @@ bool Fixture::Init() {
 			
 		}
 
-		if (m_SubMeshes.empty()) {
-			DebugLog("s", "There is nothing to render for this asset.");
+		if (m_SubMeshGeometry.empty()) {
+			DebugLog("s", "No submeshes. There is nothing to render for this asset.");
 			return false;
 		}
 		else {
@@ -159,13 +128,14 @@ bool Fixture::Init() {
 }
 
 bool Fixture::IsRenderable(const Niflib::NiGeometryRef& subMesh) {
-	if (GetSubMeshBaseTexture(subMesh) == "") {
-		DebugLog("s", "Submesh didnt have a base map.");
-	}
-
+	string subMeshBaseTexture = GetSubMeshBaseTexture(subMesh);
 	Niflib::NiGeometryDataRef geomData = subMesh->GetData();
-	if (geomData->GetUVSetCount() == 0 || GetSubMeshBaseTexture(subMesh) == "") {
-	//if (geomData->GetUVSetCount() == 0) {
+	DebugLog("i", geomData->GetVertexCount());
+
+	if (geomData->GetUVSetCount() == 0 || subMeshBaseTexture == "") {
+		if (subMeshBaseTexture == "")
+			DebugLog("s", "Submesh didnt have a base map.");
+
 		return false;
 	}
 	else {
@@ -177,6 +147,8 @@ std::string Fixture::GetSubMeshBaseTexture(const Niflib::NiGeometryRef& subMesh)
 	std::string res = "";
 
 	auto properties = subMesh->GetProperties();
+	auto property = subMesh->GetPropertyByType(Niflib::NiTexturingProperty::TYPE);
+
 	for (auto property : properties) {
 		if (property->IsDerivedType(Niflib::NiTexturingProperty::TYPE)) {
 			Niflib::NiTexturingPropertyRef texturingProperty = Niflib::DynamicCast<Niflib::NiTexturingProperty>(property);
@@ -185,9 +157,14 @@ std::string Fixture::GetSubMeshBaseTexture(const Niflib::NiGeometryRef& subMesh)
 					Niflib::TexDesc& texDesc = texturingProperty->GetTexture(Niflib::TexType::BASE_MAP);
 					auto texSource = texDesc.source;
 					//if (texSource->IsTextureExternal()) {
-						res = texSource->GetTextureFileName();
+					// Some nifs dont flag their textures as external for whatever reason....
+						res = texSource->GetTextureFileName(); 
 					//}
 				}
+
+				// TO DO, ROCK IS ONE EXAMPLE OF THIS CORNER CASE
+				// If there is no base map, there might still be textures
+				DebugLog("i", texturingProperty->GetShaderTextureCount());
 			}
 		}
 	}

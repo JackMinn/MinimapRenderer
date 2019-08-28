@@ -1,6 +1,13 @@
 #include "AssetManager.h"
 #include "Fixture.h"
+#include "FixtureInstance.h"
 #include "Engine/RenderEngine.h"
+#include "rapidcsv.h"
+#include <string.h>
+#include <locale.h>
+
+#include <d3d11.h>
+#include "SimpleMath.h"
 
 extern RenderEngine g_RenderEngine;
 
@@ -23,16 +30,85 @@ AssetManager::~AssetManager() {
 	assert(m_ExternalTextures.size() == 0);
 }
 
-void AssetManager::Initialize(const std::string& fixtureDir, const std::string& textureDir)
+void AssetManager::Initialize(HWND windowHandle, const std::string& zoneDirectory, const std::string& fixtureDir, const std::string& textureDir)
 {
+	m_WindowHandle = windowHandle;
+	m_ZoneDirectory = zoneDirectory;
 	m_FixtureDirectory = fixtureDir;
 	m_TextureDirectory = textureDir;
+}
+
+void AssetManager::LoadAllFixtures()
+{
+	rapidcsv::Document doc(m_ZoneDirectory + "nifs.csv");
+
+	std::vector <std::string> fixtures = doc.GetColumn<std::string>(1);
+	DebugLog("su", "Number of fixtures read: ", (UINT32)fixtures.size());
+	UINT32 successfullyLoaded = 0;
+	for (int i = 1; i < fixtures.size(); ++i) {
+		//DebugLog("s", fixtures[i].c_str());
+		if (AddFixture("fi.0.0." + fixtures[i])) {
+			successfullyLoaded++;
+		}
+		else {
+			DebugLog("s", "Failed to load this fixture.");
+		}
+	}
+	DebugLog("su", "Number of fixtures successfully loaded: ", successfullyLoaded);
+}
+
+void AssetManager::LoadAllFixtureInstances()
+{
+	rapidcsv::Document doc(m_ZoneDirectory + "fixtures.csv");
+	std::vector <std::string> names = doc.GetColumn<std::string>(1);
+	std::vector<string> x = doc.GetColumn<string>(2);
+	std::vector <string> y = doc.GetColumn <string>(3);
+	std::vector <string> z = doc.GetColumn <string>(4);
+	std::vector <string> scale = doc.GetColumn<string>(6);
+
+	std::vector <string> angle = doc.GetColumn<string>(14);
+	std::vector <string> rotX = doc.GetColumn<string>(15);
+	std::vector <string> rotY = doc.GetColumn<string>(16);
+	std::vector <string> rotZ = doc.GetColumn<string>(17);
+
+	for (int i = 1; i < names.size(); ++i) {
+		using namespace DirectX::SimpleMath;
+
+		string name = "fi.0.0." + names[i].substr(0, names[i].find(' ')) + ".nif";
+		DebugLog("s", name.c_str());
+
+		RemoveWhiteSpaces(x[i]);
+		RemoveWhiteSpaces(y[i]);
+		RemoveWhiteSpaces(z[i]);
+		//positions[i - 1] = Niflib::Vector3(std::stof(x[i]), std::stof(y[i]), std::stof(z[i]));
+		Vector3 position = Vector3(std::stof(x[i]), std::stof(y[i]), std::stof(z[i]));
+		
+		RemoveWhiteSpaces(scale[i]);
+		Vector3 size = Vector3(std::stof(scale[i]), std::stof(scale[i]), std::stof(scale[i]));
+		
+		RemoveWhiteSpaces(angle[i]);
+		RemoveWhiteSpaces(rotX[i]);
+		RemoveWhiteSpaces(rotY[i]);
+		RemoveWhiteSpaces(rotZ[i]);
+
+		Vector3 axis = Vector3(std::stof(rotX[i]), std::stof(rotY[i]), std::stof(rotZ[i]));
+		Quaternion rot = DirectX::SimpleMath::Quaternion::CreateFromAxisAngle(axis, std::stof(angle[i]));
+
+		m_FixtureInstances.emplace_back(FixtureInstance(name, position, rot, size));
+	}
+
+	DebugLog("su", "Number of instances: ", (UINT32)m_FixtureInstances.size());
 }
 
 // Might be better to have a more global way of accessing the window handle,
 // as other functions might later want to raise a MessageBox error, but we can
 // deal with this in a future refactor
-bool AssetManager::AddFixture(const std::string& fileName, HWND hwnd) {
+bool AssetManager::AddFixture(const std::string& fileName) {
+	if (m_Fixtures.count(fileName) > 0) {
+		DebugLog("s", "Fixture has already been initialized.");
+		return true;
+	}
+
 	std::string filePath = m_FixtureDirectory + fileName;
 	Fixture* fixture = new Fixture(filePath);
 	bool res = fixture->Init();
@@ -51,7 +127,7 @@ bool AssetManager::AddFixture(const std::string& fileName, HWND hwnd) {
 				if (!result) {
 					std::string error = "Could not find texture " + textureName;
 					std::wstring errorW(error.begin(), error.end());
-					MessageBox(hwnd, errorW.c_str(), L"Error", MB_OK);
+					MessageBox(m_WindowHandle, errorW.c_str(), L"Error", MB_OK);
 					m_ExternalTextures.erase(textureName);
 				}
 				else {

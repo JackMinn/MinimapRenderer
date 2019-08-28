@@ -111,7 +111,7 @@ bool D3D11RHI::InitializeMonitorProperties(const bool& vsync, HWND const& hwnd, 
 		return false;
 	}
 
-	// THIS MIGHT LEAK MEMORY
+	
 	ComPtr<IDXGIAdapter> tempAdapter;
 	DXGI_ADAPTER_DESC tempAdapterDesc;
 	for (UINT32 adapterIndex = 1; factory->EnumAdapters(adapterIndex, tempAdapter.GetAddressOf()) != DXGI_ERROR_NOT_FOUND; ++adapterIndex)
@@ -192,7 +192,6 @@ bool D3D11RHI::InitializeMonitorProperties(const bool& vsync, HWND const& hwnd, 
 }
 
 
-// WE ARE HERE SO FAR IN WRITING OUR CODE
 bool D3D11RHI::InitializeDeviceAndSwapChain(const UINT32& screenWidth, const UINT32& screenHeight, const UINT32& numerator, const UINT32& denominator, const HWND& hwnd)
 {
 	HRESULT result;

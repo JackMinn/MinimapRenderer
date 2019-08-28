@@ -43,7 +43,7 @@ PixelInputType VSMain(VertexInputType input)
     PixelInputType output;
     
     input.position.w = 1.0f;
-	input.position.xyz *= tex_ST.x;
+	//input.position.xyz *= tex_ST.x;
 
     output.position = mul(input.position, localToWorld);
 	output.worldPos = output.position.xyz;
@@ -73,7 +73,7 @@ float4 PSMain(PixelInputType input) : SV_TARGET
 	float attenuation = dot(-viewDir, normal);
 	attenuation = pow(attenuation, 0.8);
 	//result.rgb = attenuation;
-	//result.rgb *= attenuation;
+	result.rgb *= attenuation;
 	
 	//result.rgba = 1;
 	

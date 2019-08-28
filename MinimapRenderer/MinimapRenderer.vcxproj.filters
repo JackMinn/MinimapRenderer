@@ -90,6 +90,12 @@
     <Filter Include="Source Files\Runtime\Renderer\Public\Engine">
       <UniqueIdentifier>{4a374569-f0d0-411f-8e1a-8e6a41e62c19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Third Party\RapidCSV">
+      <UniqueIdentifier>{85071ec1-7d86-43de-aaf0-d37ad413295a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Third Party\RapidCSV\Public">
+      <UniqueIdentifier>{dcc010f9-86d0-40d5-a8db-7984f55ee1be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resource.h">
@@ -158,12 +164,17 @@
     <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Texture2D.h">
       <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Runtime\Application\Public\FixtureInstance.h" />
     <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Mesh.h">
       <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Src\Runtime\Renderer\Public\Engine\Shader.h">
       <Filter>Source Files\Runtime\Renderer\Public\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="3rd Party\RapidCSV\Public\rapidcsv.h">
+      <Filter>Third Party\RapidCSV\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Runtime\Application\Public\FixtureInstance.h">
+      <Filter>Source Files\Runtime\Application\Public</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -55,22 +55,22 @@ public:
 
 	// This is very inefficient, its better to build these once a frame, or even only
 	// once everytime the transform is modified, so this can remain on TODO for optimization
-	inline DirectX::SimpleMath::Matrix GetLocalToWorldMatrix() 
+	inline DirectX::SimpleMath::Matrix GetLocalToWorldMatrix() const
 	{
 		return DirectX::SimpleMath::Matrix::SRT(m_Scale, m_Rotation, m_Position);
 	}
 
-	inline DirectX::SimpleMath::Matrix GetLocalToWorldMatrixGPU()
+	inline DirectX::SimpleMath::Matrix GetLocalToWorldMatrixGPU() const
 	{
 		return DirectX::XMMatrixTranspose(GetLocalToWorldMatrix());
 	}
 
-	inline DirectX::SimpleMath::Matrix GetWorldToLocalMatrix()
+	inline DirectX::SimpleMath::Matrix GetWorldToLocalMatrix() const
 	{
 		return DirectX::XMMatrixInverse(nullptr, GetLocalToWorldMatrix());
 	}
 
-	inline DirectX::SimpleMath::Matrix GetWorldToLocalMatrixGPU()
+	inline DirectX::SimpleMath::Matrix GetWorldToLocalMatrixGPU() const
 	{
 		return DirectX::XMMatrixTranspose(GetWorldToLocalMatrix());
 	}

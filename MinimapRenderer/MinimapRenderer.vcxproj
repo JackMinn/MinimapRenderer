@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;NIFLIB_STATIC_LINK;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\DDSTextureLoader\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\SimpleMath\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Application\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\PCH\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Renderer\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Core\Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\RapidCSV\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\DDSTextureLoader\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\SimpleMath\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\3rd Party\NifLib\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Application\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\PCH\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Renderer\Public;C:\Users\Jack\source\repos\MinimapRenderer\MinimapRenderer\Src\Runtime\Core\Public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -160,6 +160,7 @@
   <ItemGroup>
     <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSReader.h" />
     <ClInclude Include="3rd Party\DDSTextureLoader\Public\DDSTextureLoader.h" />
+    <ClInclude Include="3rd Party\RapidCSV\Public\rapidcsv.h" />
     <ClInclude Include="3rd Party\SimpleMath\Public\SimpleMath.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Src\PCH\Public\stdafx.h" />
